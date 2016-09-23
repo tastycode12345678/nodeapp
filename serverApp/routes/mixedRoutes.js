@@ -11,4 +11,8 @@ module.exports = function(app) {
 			res.send(err);
 		});
 	});
+
+	app.get('/alexalocation', function(req, res){
+		res.send("Your are currently in kalyani nagar Pune");
+	});
 };
