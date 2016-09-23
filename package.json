@@ -1,0 +1,28 @@
+{
+  "name": "x24spartans",
+  "version": "1.0.0",
+  "description": "x24spartans",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "x24spartans"
+  ],
+  "author": "harpreet",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^1.5.0",
+    "body-parser": "^1.14.1",
+    "bower": "^1.7.7",
+    "express": "^4.13.4",
+    "express-session": "^1.7.6",
+    "key-del": "^1.2.4",
+    "mongoose": "^4.4.6",
+    "morgan": "^1.5.1",
+    "multer": "^1.1.0",
+    "node-restful": "^0.2.5",
+    "nodemailer": "^2.6.4",
+    "promise": "^7.1.1"
+  }
+}
