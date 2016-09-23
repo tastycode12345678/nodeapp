@@ -30,7 +30,7 @@ module.exports = function(app) {
 		res.sendFile(path.join(__dirname, '../../public/index.html'));
 	});
 
-	app.post('/user', function(req, res){
+	app.post('/createuser', function(req, res){
 		UserModel.createUser(req.body).then(function(response){
 			res.send(response);
 		}, function(err){
