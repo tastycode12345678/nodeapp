@@ -2,7 +2,9 @@ module.exports.CONSTANT = {
 	SCHEMA: {
 		USER: 'user',
 		ROLES: 'roles',
-		GROUP: 'groups'
+		GROUP: 'groups',
+		ORDER: 'orders',
+		TRACKING: 'tracking'
 	},
 
 	SECRET: 'x24spartans',

@@ -13,6 +13,8 @@ require('./serverApp/config/mongoose')(config.dbUrl);
 require('./serverApp/routes/userRoutes')(app);
 require('./serverApp/routes/roleRoutes')(app);
 require('./serverApp/routes/groupRoutes')(app);
+require('./serverApp/routes/orderRoutes')(app);
+require('./serverApp/routes/trackingRoutes')(app);
 
 app.listen(port, function() {
     console.log('Server listening on port ...'+ port);

@@ -26,6 +26,11 @@ var userSchema = mongoose.Schema({
 		type: mongoose.Schema.Types.ObjectId,
 		ref: CONSTANT.SCHEMA.ROLES,
 		required: true
+	},
+	group_id:{
+		type: mongoose.Schema.Types.ObjectId,
+		ref: CONSTANT.SCHEMA.GROUP,
+		required: true
 	}
 });
 
