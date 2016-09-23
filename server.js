@@ -15,6 +15,7 @@ require('./serverApp/routes/roleRoutes')(app);
 require('./serverApp/routes/groupRoutes')(app);
 require('./serverApp/routes/orderRoutes')(app);
 require('./serverApp/routes/trackingRoutes')(app);
+require('./serverApp/routes/mixedRoutes')(app);
 
 app.listen(port, function() {
     console.log('Server listening on port ...'+ port);

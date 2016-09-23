@@ -380,7 +380,7 @@ UserModel.prototype.getUserById = function(userObject){
 						resolve(serverResponse);
 					}else{
 						serverResponse.error = 1;
-						serverResponse.response = {'errmsg': 'No such user found.'};
+						serverResponse.response = {'errmsg': 'User not found.'};
 						reject(serverResponse);
 					}
 				}

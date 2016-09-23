@@ -97,4 +97,29 @@ OrderModel.prototype.getOrderById = function(orderObject){
 	});
 };
 
+OrderModel.prototype.updateOrder = function(orderObject){
+	return new Promise(function(resolve, reject){
+		try{
+			orderSchema.update({'_id': orderObject._id}, orderObject, function(err, response){
+				if(err){
+					console.log(err);
+					serverResponse.error = 1;
+					serverResponse.response = err;
+					reject(serverResponse);
+				}
+				else{
+					serverResponse.success = 1;
+					serverResponse.response = { _id: orderObject._id };
+					resolve(serverResponse);
+				}
+			});
+		} catch(e){
+			console.log(e);
+			serverResponse.error = 1;
+			serverResponse.response = e;
+			reject(serverResponse);
+		}
+	});
+};
+
 module.exports.OrderModel = new OrderModel();
