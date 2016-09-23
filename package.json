@@ -23,6 +23,8 @@
     "multer": "^1.1.0",
     "node-restful": "^0.2.5",
     "nodemailer": "^2.6.4",
-    "promise": "^7.1.1"
+    "promise": "^7.1.1",
+    "pushbots": "0.0.4",
+    "request": "^2.75.0"
   }
 }
