@@ -1,7 +1,7 @@
 var mixedModel = require('../model/mixedModel').MixedModel;
 var CONSTANT = require('../config/constant').CONSTANT;
 //var pushbots = require('pushbots');
-var apn = require('apn');
+
 
 module.exports = function(app) {
 
