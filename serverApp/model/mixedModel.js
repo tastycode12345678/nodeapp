@@ -1,5 +1,6 @@
 var orderModel = require('../model/orderModel').OrderModel;
 var userModel = require('../model/userModel').UserModel;
+var groupModel = require('../model/groupModel').GroupModel;
 var Promise = require('promise');
 var CONSTANT = require('../config/constant').CONSTANT;
 
@@ -24,6 +25,55 @@ MixedModel.prototype.alexahandler = function(obj){
 			reject(err);
 		}
 	});
+};
+
+MixedModel.prototype.setDeviceId = function(obj){
+	var that = this;
+	return new Promise(function(resolve, reject){
+		try{
+			obj._id = "57e50fb5c6cd3c04ac29f5b0";
+			groupModel.updateGroup(obj).then(function(resp){
+        		resolve(resp);
+        	}, function(err){
+				reject(err);
+        	});
+		} catch(err){
+			reject(err);
+		}
+	});
+};
+
+MixedModel.prototype.sendNotification = function(obj){
+	var options = {};
+	var apnProvider = new apn.Provider(options);
+	var note = new apn.Notification();
+	//var deviceToken = "7c424d80e8ffbde00f1ca4a30bfcd9e06b3e277431aaac48741b5e8922668cb1";
+	note.expiry = Math.floor(Date.now() / 1000) + 3600; // Expires 1 hour from now.
+	note.badge = 3;
+	note.sound = "ping.aiff";
+	note.alert = "\uD83D\uDCE7 \u2709 You have a new message";
+	note.payload = {'messageFrom': 'John Appleseed'};
+	note.topic = "com.extentia.LostAndFound";
+
+	try{
+		groupModel.getGroupById(obj).then(function(resp){
+    		return new Promise(function(resolve, reject){
+				apnProvider.send(note, resp.deviceToken).then(function(result){
+				    that.serverResponse.success = 1;
+				    that.serverResponse.response = result;
+				    resolve(that.serverResponse);
+				}, function(error) {
+					that.serverResponse.error = 1;
+				    that.serverResponse.response = error;
+					reject(that.serverResponse);
+				});
+			});
+    	}, function(err){
+			reject(err);
+    	});
+	} catch(err){
+		reject(err);
+	}
 };
 
 module.exports.MixedModel = new MixedModel();

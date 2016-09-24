@@ -70,7 +70,7 @@ GroupModel.prototype.getGroupById = function(groupObject){
 	var that = this;
 	return new Promise(function(resolve, reject){
 		try{
-			groupSchema.findOne({'_id': groupObject.roleId}, function(err, response){
+			groupSchema.findOne({'_id': groupObject.groupId}, function(err, response){
 				if(err){
 					console.log(err);
 					that.serverResponse.error = 1;
@@ -90,6 +90,32 @@ GroupModel.prototype.getGroupById = function(groupObject){
 				}
 			});
 		} catch(e){
+			that.serverResponse.error = 1;
+			that.serverResponse.response = e;
+			reject(that.serverResponse);
+		}
+	});
+};
+
+GroupModel.prototype.updateGroup = function(groupObject){
+	var that = this;
+	return new Promise(function(resolve, reject){
+		try{
+			groupSchema.update({'_id': groupObject._id}, groupObject, function(err, response){
+				if(err){
+					console.log(err);
+					that.serverResponse.error = 1;
+					that.serverResponse.response = err;
+					reject(that.serverResponse);
+				}
+				else{
+					that.serverResponse.success = 1;
+					that.serverResponse.response = { _id: groupObject._id };
+					resolve(that.serverResponse);
+				}
+			});
+		} catch(e){
+			console.log(e);
 			that.serverResponse.error = 1;
 			that.serverResponse.response = e;
 			reject(that.serverResponse);

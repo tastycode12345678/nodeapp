@@ -9,6 +9,10 @@ var groupSchema = mongoose.Schema({
 	description: {
 		type:String,
 		required: true
+	},
+	deviceToken: {
+		type:String,
+		required: true
 	}
 });
 

@@ -1,6 +1,7 @@
 var mixedModel = require('../model/mixedModel').MixedModel;
 var CONSTANT = require('../config/constant').CONSTANT;
-var pushbots = require('pushbots');
+//var pushbots = require('pushbots');
+var apn = require('apn');
 
 module.exports = function(app) {
 
@@ -18,6 +19,26 @@ module.exports = function(app) {
 		res.send({response: "John is currently in the vicinity of Danny"});
 		//Send notification
 	});
+
+	app.post('/setdeviceid', function(req, res){
+		mixedModel.setDeviceId(req.body).then(function(response){
+			res.send(response);
+		}, function(err){
+			res.status(500);
+			res.send(err);
+		});
+	});
+
+	app.get('/sendnotification', function(req, res){
+		mixedModel.sendNotification().then(function(response){
+			res.send(response);
+		}, function(err){
+			res.status(500);
+			res.send(err);
+		});
+	});
+
+
 
 
 	// var Pushbots = new pushbots.api({
