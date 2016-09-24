@@ -56,10 +56,10 @@ MixedModel.prototype.sendNotification = function(){
 				var note = new apn.Notification();
 				//var deviceToken = "7c424d80e8ffbde00f1ca4a30bfcd9e06b3e277431aaac48741b5e8922668cb1";
 				note.expiry = Math.floor(Date.now() / 1000) + 3600; // Expires 1 hour from now.
-				note.badge = 3;
+				//note.badge = 3;
 				note.sound = "ping.aiff";
-				note.alert = "\uD83D\uDCE7 \u2709 You have a new message";
-				note.payload = {'messageFrom': 'John Appleseed'};
+				note.alert = "\uD83D\uDCE7 \u2709  Order #123456 has been delayed by John.";
+				note.payload = {'messageFrom': 'John'};
 				note.topic = "com.extentia.LostAndFound";
 				console.log(">>>>>>>>>>"+ resp.response.deviceToken);
 				apnProvider.send(note, resp.response.deviceToken).then(function(result){
