@@ -6,7 +6,7 @@ var CONSTANT = require('../config/constant').CONSTANT;
 module.exports = function(app) {
 
 	app.post('/alexadata', function(req, res){
-		res.send({response: "currently available in Magarpatta"});
+		res.send({response: "currently available in North Main Road Koregaon Park"});
 		// mixedModel.alexahandler(req.body).then(function(response){
 		// 	res.send(response);
 		// }, function(err){
@@ -16,7 +16,7 @@ module.exports = function(app) {
 	});
 
 	app.get('/alexalocation', function(req, res){
-		res.send({response: "John is currently in the vicinity of Danny"});
+		res.send({response: "Danny is currently in the vicinity of John"});
 		//Send notification
 	});
 
